@@ -1,16 +1,13 @@
+import { GlobalStyle } from './GlobalStyle';
+import stickers from '../stickers.json';
+import { StickerList } from "./StickerList/StickerList";
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <StickerList stickers={stickers} />
+      <GlobalStyle/>
+    </>
   );
 };
