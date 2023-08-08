@@ -1,16 +1,22 @@
+import styled from 'styled-components';
+import { Box } from "./Box";
+import { LanguageCard } from "./LanguageCard/LanguageCard";
+import { Header } from "./Header/Header";
+
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <Box height='100vh' color= '#fffae1' backgroundColor= 'black'>
+      <Box maxWidth='1280px' mx='auto' py='80px' px='80px'>
+        <Header>Event delegation</Header>
+        <LanguageCard/>
+      </Box>
+    </Box>
   );
 };
+
+
+
+
+
+
