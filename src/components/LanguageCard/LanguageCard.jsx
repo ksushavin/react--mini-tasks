@@ -7,32 +7,71 @@ import { InnerContainer, FormTitle, Label, Input, Button } from './LanguageCard.
 export class LanguageCard extends Component {
 
   state = {
+    firstName: '',
+    lastName: '',
     language: '',
+    conformation: false,
   };
 
+  handelChange = (e) => {
+    const { name, value, checked, type } = e.target;
+    const result = type === 'checkbox' ? checked : value;
+    this.setState({ [name]: result })
+  }
+
+  handelSubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state)
+  }
+
   render() {
+    const { firstName, language, lastName, conformation } = this.state;
+
     return (
       <InnerContainer>
         <FormTitle>
-          Selected Tag is <span></span>
+          Selected Tag is <span>{language }</span>
         </FormTitle>
-        <form id='form'>
-          <Label htmlFor="feature">
-            Feature name
+        <form id='form' onSubmit={this.handelSubmit}>
+          <Label htmlFor="firstName">
+            First name
           </Label>
           <Input
-            id="feature"
-            name="feature"
-            type="text" />
+            id="firstName"
+            name="firstName"
+            type="text"
+            onChange={this.handelChange}
+            value={firstName} />
+          
+          <Label htmlFor="lastName">
+            Last name
+          </Label>
+          <Input
+            id="lastName"
+            name="lastName"
+            type="text"
+            onChange={this.handelChange}
+            value={lastName} />
+
+          
+
+          <Box mb='20px'>
+            <input
+            name="conformation"
+            type="checkbox"
+            onChange={this.handelChange}
+            value={conformation} />
+            Conformation
+          </Box>
+          <Box mb='20px'>
+            <Box p='4px' ><input type="radio" name='language' value='React' onChange={this.handelChange} />React</Box>
+            <Box p='4px' ><input type="radio" name='language' value='JS' onChange={this.handelChange} />Js</Box>
+            <Box p='4px' ><input type="radio" name='language' value='Node.js' onChange={this.handelChange} />Node.js</Box>
+          </Box>
+           <Button type='submit'>Submit</ Button>
         </form>
-        <Box mb='30px'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum, est eveniet. Quod vitae iusto modi velit, reiciendis tempora reprehenderit hic. Perferendis illum sunt quibusdam, unde molestiae aliquid. Commodi, totam in.</Box>
-        <Box display='flex' gridGap='12px'>
-          <Button>Css</Button>
-          <Button>React</Button>
-          <Button>Node.js</Button>
-        </Box>
       </InnerContainer>
-    )
+    )  
   }
 }
 

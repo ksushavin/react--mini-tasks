@@ -51,6 +51,7 @@ export const Input = styled.input`
   width: 300px;
   height: 40px;
   padding: 8px;
+  color: #fff;
   background-color: transparent;
   margin-bottom: 28px;
 `
