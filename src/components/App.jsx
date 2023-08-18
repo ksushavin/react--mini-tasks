@@ -5,7 +5,7 @@ import { Header } from "./Header/Header";
 
 export const App = () => {
   return (
-    <Box height='100vh' color= '#fffae1' backgroundColor= 'black'>
+    <Box color= '#fffae1' backgroundColor= 'black'>
       <Box maxWidth='1280px' mx='auto' py='80px' px='80px'>
         <Header>Event delegation</Header>
         <LanguageCard/>

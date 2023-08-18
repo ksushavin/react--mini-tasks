@@ -53,15 +53,18 @@ export const Input = styled.input`
   padding: 8px;
   color: #fff;
   background-color: transparent;
-  margin-bottom: 28px;
+  border: 1px solid #fffae1;
+  border-radius: 2px
 `
 
 export const Button = styled.button`
   /* align-items: center; */
-  width: 90px;
+  width: 110px;
   height: 40px;
   padding: 8px;
   background-color: transparent;
-  font-size: 12px;
-  color: #fffae1; 
+  font-size: 16px;
+  color: #fffae1;
+  border: 1px solid #fffae1;
+  border-radius: 2px
 `
