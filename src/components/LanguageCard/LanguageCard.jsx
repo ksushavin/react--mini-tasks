@@ -1,5 +1,5 @@
 
-// import PropTypes from 'prop-types'
+
 import { Formik, ErrorMessage } from 'formik';
 import * as Yup from "yup";
 import { Component } from 'react'
@@ -38,13 +38,7 @@ export class LanguageCard extends Component {
     this.setState({ [name]: result })
   }
 
-  // handelSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log(this.state)
-  // }
-
   render() {
-
     return (
       <InnerContainer>
         <Formik
@@ -63,8 +57,8 @@ export class LanguageCard extends Component {
           {props => (
             
             <form id='form' onSubmit={props.handleSubmit}>
-            <FormTitle>
-              Selected Tag is <span>{props.values.language}</span>
+              <FormTitle>
+                Selected Tag is <span>{props.values.language}</span>
               </FormTitle>
               <Box mb="18px">
                 <Label htmlFor="firstName">
@@ -95,63 +89,58 @@ export class LanguageCard extends Component {
                   onBlur={props.handleBlur}
                   value={props.values.lastName}
                 />
-                <Box color="tomato"><ErrorMessage name="lastName" /></Box>
+                <Box color="tomato">
+                  <ErrorMessage name="lastName" />
+                </Box>
               </Box>
-            
-            
-            
-            
-            <Box mt='8px' mb='20px' display='flex' gridGap='4px'>
-              <input
-                name="conformation"
-                type="checkbox"
-                onChange={props.handleChange}
-                onBlur={props.handleBlur}
-                value={props.values.conformation}
-                checked={props.values.conformation}
-              />
-              Conformation
-            </Box>
+              <Box mt='8px' mb='20px' display='flex' gridGap='4px'>
+                <input
+                  name="conformation"
+                  type="checkbox"
+                  onChange={props.handleChange}
+                  onBlur={props.handleBlur}
+                  value={props.values.conformation}
+                  checked={props.values.conformation}
+                />
+                Conformation
+              </Box>
 
-            <Box mb='20px'>
-              <Box p='4px'display='flex' gridGap='4px' >
-                <input 
-                type="radio" 
-                name='language' 
-                value='React'
-                checked={props.values.language==='React'}
-                onChange={props.handleChange}
-                onBlur={props.handleBlur} />React</Box>
-              <Box p='4px'display='flex' gridGap='4px' >
-                <input 
-                type="radio"    
-                name='language' 
-                value='JS'
-                checked={props.values.language==='JS'}
-                onChange={props.handleChange}
-                onBlur={props.handleBlur} />Js</Box>
-              <Box p='4px' display='flex' gridGap='4px'>
-                <input 
-                type="radio" 
-                name='language' 
-                value='Node.js'
-                checked={props.values.language==='Node.js'}
-                onChange={props.handleChange}
-                onBlur={props.handleBlur} />Node.js</Box>
-              </Box>
-            <Button type='submit'>Submit</ Button>
-          </form>
+              <Box mb='20px'>
+                <Box p='4px'display='flex' gridGap='4px' >
+                  <input 
+                  type="radio" 
+                  name='language' 
+                  value='React'
+                  checked={props.values.language==='React'}
+                  onChange={props.handleChange}
+                  onBlur={props.handleBlur} />React</Box>
+                <Box p='4px'display='flex' gridGap='4px' >
+                  <input 
+                  type="radio"    
+                  name='language' 
+                  value='JS'
+                  checked={props.values.language==='JS'}
+                  onChange={props.handleChange}
+                  onBlur={props.handleBlur} />Js</Box>
+                <Box p='4px' display='flex' gridGap='4px'>
+                  <input 
+                  type="radio" 
+                  name='language' 
+                  value='Node.js'
+                  checked={props.values.language==='Node.js'}
+                  onChange={props.handleChange}
+                  onBlur={props.handleBlur} />Node.js</Box>
+                </Box>
+              <Button type='submit'>Submit</ Button>
+            </form>
           )}
-          
         </Formik>
       </InnerContainer>
     )  
   }
 }
 
-// LanguageCard.propTypes = {
 
-// }
 
 
 

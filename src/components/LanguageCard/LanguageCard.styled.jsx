@@ -43,11 +43,6 @@ export const Label = styled.label`
   font-size: 18px;
 `
 export const Input = styled.input`
-  /* align-items: center;
-  display: flex;
-  gap: 8px;
-  margin-bottom: 8px;
-  font-size: 24px; */
   width: 300px;
   height: 40px;
   padding: 8px;
@@ -58,7 +53,6 @@ export const Input = styled.input`
 `
 
 export const Button = styled.button`
-  /* align-items: center; */
   width: 110px;
   height: 40px;
   padding: 8px;
