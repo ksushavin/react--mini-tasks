@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const InnerContainer = styled.div`
+    
     padding: 30px;
     background-image: linear-gradient(
         50deg,
@@ -27,7 +28,7 @@ export const InnerContainer = styled.div`
     )
 `
 
-export const FormTitle = styled.h2`
+export const GalleryTitle = styled.h2`
     margin-top: 0px;
     font-weight: 600;
     font-size: 48px;
@@ -35,7 +36,7 @@ export const FormTitle = styled.h2`
     margin-bottom: 70px;
 `
 
-export const Label = styled.label`
+/* export const Label = styled.label`
   align-items: center;
   display: flex;
   gap: 8px;
@@ -50,14 +51,14 @@ export const Input = styled.input`
   background-color: transparent;
   border: 1px solid #fffae1;
   border-radius: 2px
-`
+` */
 
 export const Button = styled.button`
-  width: 110px;
+  width: 120px;
   height: 40px;
   padding: 8px;
   background-color: transparent;
-  font-size: 16px;
+  font-size: 14px;
   color: #fffae1;
   border: 1px solid #fffae1;
   border-radius: 2px

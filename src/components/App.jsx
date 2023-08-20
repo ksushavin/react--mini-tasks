@@ -1,14 +1,14 @@
 import { Box } from "./Box";
-import { LanguageCard } from "./LanguageCard/LanguageCard";
+import { LanguageFilter } from './LanguageFilter/LanguageFilter';
 import { Header } from "./Header/Header";
 
 
 export const App = () => {
   return (
-    <Box color= '#fffae1' backgroundColor= 'black'>
+    <Box color= '#fffae1'>
       <Box maxWidth='1280px' mx='auto' py='80px' px='80px'>
-        <Header>Event delegation</Header>
-        <LanguageCard/>
+        <Header>Live cycles</Header>
+        <LanguageFilter/>
       </Box>
     </Box>
   );

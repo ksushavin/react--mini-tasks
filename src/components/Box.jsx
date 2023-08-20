@@ -8,7 +8,8 @@ import {
   background,
   border,
   position,
-  maxWidth
+  maxWidth,
+  height
 } from 'styled-system';
 
 export const Box = styled('div')(
@@ -20,5 +21,6 @@ export const Box = styled('div')(
   background,
   border,
   position,
-  maxWidth
+  maxWidth, 
+  height
 );
