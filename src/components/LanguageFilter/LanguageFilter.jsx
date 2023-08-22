@@ -5,6 +5,7 @@
 import { Component } from 'react'
 import { Box } from 'components/Box';
 import { InnerContainer, GalleryTitle, Button } from './LanguageFilter.styled';
+import { getFilteredItems } from 'api/filter';
 
 // const INITIAL_VALUE = {
 //   firstName: '',
@@ -29,34 +30,101 @@ import { InnerContainer, GalleryTitle, Button } from './LanguageFilter.styled';
 export class LanguageFilter extends Component {
 
   state = {
-    isOpen: true
+    filters: {
+      language: '',
+      salary: '',
+    },
+    isOpen: true,
+    hasError: false,
   };
 
-  // handelChange = (e) => {
-  //   const { name, value, checked, type } = e.target;
-  //   const result = type === 'checkbox' ? checked : value;
-  //   this.setState({ [name]: result })
-  // }
+  handleChange = (event) => {
+    const { value, name } = event.target;
+    this.setState((prevState)=>({filters: {...prevState.filters, [name]: value }}))
+  }
 
-  toggleGallery = () => {
+  toggleHint = () => {
     this.setState(({isOpen})=>({isOpen: !isOpen}))
   }
 
+  componentDidMount() {
+    const queryString = window.location.search;
+    const params = new URLSearchParams(queryString);
+    const salary = params.get('salary');
+    console.log(params);
+    console.log(window.location);
+    
+    params.forEach((param, key)=> console.log(key, param))
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { language, salary } = this.state.filters;
+    const queryParams = `?language=${language}&salary=${salary}`;
+    window.history.pushState('','', queryParams);
+
+    if (prevState.filters !== this.state.filters) {
+      //іммітуємо запит
+      getFilteredItems(queryParams).then(console.log)
+    }
+  }
+
+  componentDidCatch() {
+    console.log('there was an error');
+    this.setState({ hasError: true })
+  }
+
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, hasError, filters } = this.state;
+    // throw new Error();
     return (
       <InnerContainer>
         <GalleryTitle>
           Events
         </GalleryTitle>
 
-        <Button type='button' onClick={this.toggleGallery} >toggle Gallery</ Button>
+        <Button type='button' onClick={this.toggleHint} >toggle Gallery </ Button>
         
-        {isOpen && <Hint/>}
+        {isOpen && !hasError && <Hint/>}
+
+        <Box></Box>
+        <Box></Box>
+        <select
+          name="language"
+          id="language"
+          defaultValue=''
+        onChange={this.handleChange}>
+          <option
+            value=""
+            defaultValue=''
+            disabled>
+            Select language
+          </option>
+          <option>Java</option>
+          <option>JavaScript</option>
+          <option>React</option>
+        </select>
+        <select
+          name="salary"
+          id="salary"
+          defaultValue=''
+          onChange={this.handleChange}>
+          <option
+            value=""
+            disabled
+          >
+            Select salary
+          </option>
+          <option>10000</option>
+          <option>12000</option>
+          <option>15000</option>
+        </select>
       </InnerContainer>
     )  
   }
 }
+
+
+
 
 
 let intervalId = null;
@@ -80,13 +148,14 @@ class Hint extends Component {
 
   componentWillUnmount() {
     console.log('Hint unmounted');
-    
+
     clearInterval(intervalId);
     window.removeEventListener('mousemove',this.handleMouseMove )
   }
 
   render() {
     const { counter } = this.state;
+    
     return (
       <Box mt='20px'>
         Filter it {counter}
