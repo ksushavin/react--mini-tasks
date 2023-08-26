@@ -4,6 +4,7 @@
 // import * as Yup from "yup";
 import { Component } from 'react'
 import { Box } from 'components/Box';
+import queryString from 'query-string';
 import { InnerContainer, GalleryTitle, Button } from './LanguageFilter.styled';
 import { getFilteredItems } from 'api/filter';
 
@@ -50,17 +51,26 @@ export class LanguageFilter extends Component {
   componentDidMount() {
     const queryString = window.location.search;
     const params = new URLSearchParams(queryString);
-    const salary = params.get('salary');
-    console.log(params);
-    console.log(window.location);
-    
-    params.forEach((param, key)=> console.log(key, param))
+  
+    params.forEach((value, key) => {
+      this.setState((prevState) => (
+        {
+          filters: {
+            ...prevState.filters,
+            [key]: value,
+          }
+        }
+      ))
+    })  
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { language, salary } = this.state.filters;
-    const queryParams = `?language=${language}&salary=${salary}`;
-    window.history.pushState('','', queryParams);
+    const {filters} = this.state;
+    const queryParams = queryString.stringify(filters, {
+        skipEmptyString: true
+      });
+    window.history.pushState('','', `?${queryParams}`);
+    // window.location.search = queryParams;
 
     if (prevState.filters !== this.state.filters) {
       //іммітуємо запит
@@ -75,7 +85,7 @@ export class LanguageFilter extends Component {
 
   render() {
     const { isOpen, hasError, filters } = this.state;
-    // throw new Error();
+    const { salary, language } = filters;
     return (
       <InnerContainer>
         <GalleryTitle>
@@ -91,7 +101,7 @@ export class LanguageFilter extends Component {
         <select
           name="language"
           id="language"
-          defaultValue=''
+          value={language}
         onChange={this.handleChange}>
           <option
             value=""
@@ -106,7 +116,7 @@ export class LanguageFilter extends Component {
         <select
           name="salary"
           id="salary"
-          defaultValue=''
+          value={salary}
           onChange={this.handleChange}>
           <option
             value=""
@@ -135,7 +145,7 @@ class Hint extends Component {
   }
 
   handleMouseMove = () => {
-    console.log('mouse moving')
+    console.log('mouse moving, click toggle!')
   }
 
   componentDidMount() {
