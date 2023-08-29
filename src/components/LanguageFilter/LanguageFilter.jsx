@@ -1,35 +1,11 @@
 
-
-// import { Formik, ErrorMessage } from 'formik';
-// import * as Yup from "yup";
 import { Component } from 'react'
 import { Box } from 'components/Box';
 import queryString from 'query-string';
 import { InnerContainer, GalleryTitle, Button } from './LanguageFilter.styled';
 import { getFilteredItems } from 'api/filter';
 
-// const INITIAL_VALUE = {
-//   firstName: '',
-//   lastName: '',
-//   language: '',
-//   conformation: false,
-// }
-
-// const Schema = Yup.object().shape({
-//   firstName: Yup.string()
-//     .min(2, 'Too Short!')
-//     .max(50, 'Too Long!')
-//     .required('Required'),
-//   lastName: Yup.string()
-//     .min(2, 'Too Short!')
-//     .max(50, 'Too Long!')
-//     .required('Required'),
-//   language: Yup.string().required('Required'),
-//   conformation: Yup.boolean().required('Required'),
-//  });
-
 export class LanguageFilter extends Component {
-
   state = {
     filters: {
       language: '',
@@ -96,43 +72,47 @@ export class LanguageFilter extends Component {
         
         {isOpen && !hasError && <Hint/>}
 
-        <Box></Box>
-        <Box></Box>
-        <select
-          name="language"
-          id="language"
-          value={language}
-        onChange={this.handleChange}>
-          <option
-            value=""
-            defaultValue=''
-            disabled>
-            Select language
-          </option>
-          <option>Java</option>
-          <option>JavaScript</option>
-          <option>React</option>
-        </select>
-        <select
-          name="salary"
-          id="salary"
-          value={salary}
-          onChange={this.handleChange}>
-          <option
-            value=""
-            disabled
-          >
-            Select salary
-          </option>
-          <option>10000</option>
-          <option>12000</option>
-          <option>15000</option>
-        </select>
+        <Box display='flex' gridGap='8px' pt='12px'>
+          <Box>
+            <select
+              name="language"
+              id="language"
+              value={language}
+              onChange={this.handleChange}>
+              <option
+                value=""
+                defaultValue=''
+                disabled>
+                Select language
+              </option>
+              <option>Java</option>
+              <option>JavaScript</option>
+              <option>React</option>
+            </select>
+          </Box>
+          <Box>
+            <select
+              name="salary"
+              id="salary"
+              value={salary}
+              onChange={this.handleChange}>
+              <option
+                value=""
+                disabled
+              >
+                Select salary
+              </option>
+              <option>10000</option>
+              <option>12000</option>
+              <option>15000</option>
+            </select>
+          </Box>
+        </Box>
+        
       </InnerContainer>
     )  
   }
 }
-
 
 
 
@@ -177,105 +157,6 @@ class Hint extends Component {
 
 
 
-
-
-
-
-
-
-
-// <Formik
-//           initialValues={{ ...INITIAL_VALUE }}
-//           validationSchema={Schema}
-//           onSubmit={(values, actions) => {
-//             setTimeout(() => {
-//             alert(JSON.stringify(values, null, 2));
-//               actions.setSubmitting(false);
-              
-//             }, 1000);
-//             console.log(values);
-//             actions.resetForm();
-//           }}
-//         >
-//           {props => (
-            
-//             <form id='form' onSubmit={props.handleSubmit}>
-              
-//               <Box mb="18px">
-//                 <Label htmlFor="firstName">
-//                   First name
-//                 </Label>
-//                 <Input
-//                   id="firstName"
-//                   name="firstName"
-//                   type="text"
-//                   onChange={props.handleChange}
-//                   onBlur={props.handleBlur}
-//                   value={props.values.firstName} 
-//                   />
-//                   <Box color="red"><ErrorMessage name="firstName" /></Box>
-//                 {/* {props.errors.firstName ? (
-//                 <div>{formik.errors.firstName}</div>
-//                 ) : null} */}
-//               </Box>
-//               <Box>
-//                 <Label htmlFor="lastName">
-//                   Last name
-//                 </Label>
-//                 <Input
-//                   id="lastName"
-//                   name="lastName"
-//                   type="text"
-//                   onChange={props.handleChange}
-//                   onBlur={props.handleBlur}
-//                   value={props.values.lastName}
-//                 />
-//                 <Box color="tomato">
-//                   <ErrorMessage name="lastName" />
-//                 </Box>
-//               </Box>
-//               <Box mt='8px' mb='20px' display='flex' gridGap='4px'>
-//                 <input
-//                   name="conformation"
-//                   type="checkbox"
-//                   onChange={props.handleChange}
-//                   onBlur={props.handleBlur}
-//                   value={props.values.conformation}
-//                   checked={props.values.conformation}
-//                 />
-//                 Conformation
-//               </Box>
-
-//               <Box mb='20px'>
-//                 <Box p='4px'display='flex' gridGap='4px' >
-//                   <input 
-//                   type="radio" 
-//                   name='language' 
-//                   value='React'
-//                   checked={props.values.language==='React'}
-//                   onChange={props.handleChange}
-//                   onBlur={props.handleBlur} />React</Box>
-//                 <Box p='4px'display='flex' gridGap='4px' >
-//                   <input 
-//                   type="radio"    
-//                   name='language' 
-//                   value='JS'
-//                   checked={props.values.language==='JS'}
-//                   onChange={props.handleChange}
-//                   onBlur={props.handleBlur} />Js</Box>
-//                 <Box p='4px' display='flex' gridGap='4px'>
-//                   <input 
-//                   type="radio" 
-//                   name='language' 
-//                   value='Node.js'
-//                   checked={props.values.language==='Node.js'}
-//                   onChange={props.handleChange}
-//                   onBlur={props.handleBlur} />Node.js</Box>
-//                 </Box>
-//               <Button type='submit'>Submit</ Button>
-//             </form>
-//           )}
-//         </Formik>
 
 
 
